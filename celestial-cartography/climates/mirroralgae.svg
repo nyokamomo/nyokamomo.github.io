@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">记忆镜苔</title>
+  <desc id="desc">奇特生态气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b4eee4"/><stop offset="1" stop-color="#2f6d87"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M13 65 C32 29 90 30 116 63 C91 100 38 107 13 65 Z" fill="#143f59" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 63 C46 43 88 43 106 63 C88 88 43 90 22 63 Z" fill="#d7a7bd" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M43 52 L65 43 L84 51 L70 61 L47 64 Z" fill="#f9d7b6"/><path d="M29 75 C50 85 80 84 99 72 M61 59 L76 68" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 54 Q45 58 49 59 Q45 60 44 64 Q43 60 39 59 Q43 58 44 54 Z" fill="#b4eee4"/><path d="M88 69 Q89 71 91 72 Q89 73 88 75 Q87 73 85 72 Q87 71 88 69 Z" fill="#b4eee4"/>
+</svg>

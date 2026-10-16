@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">羽雾天林</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eee7ff"/><stop offset="1" stop-color="#7562a4"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path data-terrain-fill="true" d="M-8 119 C24 111 47 117 73 111 C96 106 115 111 136 105 L136 136 L-8 136 Z" fill="#73a9bd"/><path data-terrain-edge="true" d="M-8 119 C24 111 47 117 73 111 C96 106 115 111 136 105" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 111 V49 M65 55 L37 41 M66 54 L90 36" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 56 C25 59 20 28 43 24 C49 15 62 20 65 26 C68 16 85 16 91 26 C111 25 113 52 64 56 Z" fill="#b2decc" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 54 L43 27 M64 54 L57 22 M65 54 L76 22 M65 54 L94 30" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="34" cy="72" r="4" fill="#f6cadb"/><circle cx="105" cy="70" r="3" fill="#f6cadb"/>
+</svg>

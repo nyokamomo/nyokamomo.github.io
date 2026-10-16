@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">错昼裂界</title>
+  <desc id="desc">异常纪元气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9f8ed"/><stop offset="1" stop-color="#55b5ca"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M0 12 H75 L48 61 L26 85 L0 92 Z" fill="#d9f8ed"/><path d="M75 12 H128 V115 L92 92 L48 61 Z" fill="#f4ab72"/><path d="M75 12 L48 61 L26 85 M48 61 L92 92 L128 115" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="35" cy="38" r="12" fill="#fff2cb" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="99" cy="81" r="10" fill="#fff2cb" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 112 C39 105 69 112 92 106 M78 31 C94 25 105 31 119 26" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

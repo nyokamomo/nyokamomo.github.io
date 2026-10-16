@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">铁核雹雨</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e4f1eb"/><stop offset="1" stop-color="#385064"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M20 26 L30 31 M98 19 L109 25 M17 61 L28 66 M101 75 L114 80" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M45 22 L87 31 L102 64 L75 100 L39 85 L29 52 Z" fill="#70858b" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M45 22 L66 49 L29 52 Z" fill="#bfdcdb"/><path d="M66 49 L87 31 L102 64 L75 100 Z" fill="#394e60"/><path d="M45 22 L66 49 L87 31 M29 52 L66 49 L75 100" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 87 Q25 91 29 92 Q25 93 24 97 Q23 93 19 92 Q23 91 24 87 Z" fill="#e4f1eb"/>
+</svg>

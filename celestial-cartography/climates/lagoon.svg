@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">温和舒适</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bdeaf1"/><stop offset="1" stop-color="#168eae"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <circle cx="94" cy="28" r="13" fill="#e9e1ac" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 88 C14 92 24 65 46 73 C63 60 80 79 93 81 C110 85 120 75 136 79 L136 136 L-8 136 Z" fill="#70bb7f"/><path data-terrain-edge="true" d="M-8 88 C14 92 24 65 46 73 C63 60 80 79 93 81 C110 85 120 75 136 79" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 104 C22 89 49 90 72 101 C94 111 115 92 136 94 L136 136 L-8 136 Z" fill="#369774"/><path data-terrain-edge="true" d="M-8 104 C22 89 49 90 72 101 C94 111 115 92 136 94" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 118 C26 109 52 116 80 115 C102 114 116 110 136 113 L136 136 L-8 136 Z" fill="#e9e1ac"/><path data-terrain-edge="true" d="M-8 118 C26 109 52 116 80 115 C102 114 116 110 136 113" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

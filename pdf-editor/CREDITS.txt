@@ -1,0 +1,34 @@
+NYOKORE PDF重塑矩阵
+
+PDF operations run in a local browser Web Worker. No paid API or AI is used.
+
+@embedpdf/pdfium 2.15.1, Bob Singor and Ji Chang
+https://www.npmjs.com/package/@embedpdf/pdfium
+https://github.com/embedpdf/embed-pdf-viewer
+JavaScript wrapper: MIT (LICENSE-embedpdf.txt).
+Bundled PDFium WebAssembly: PDFium Authors; BSD-style terms
+as distributed in this exact npm package (LICENSE-pdfium.txt).
+The published package's README describes its PDFium license as Apache-2.0,
+but its accompanying LICENSE.pdfium is the BSD-style text retained here.
+No AGPL component, cloud SDK or CloudPDF server is included.
+
+Original runtime files are copied without functional changes; sourceMappingURL
+is omitted because source maps are not shipped. See project preparation script.
+
+The tool icon was provided by the user. The original is archived in the project;
+the existing website version is retained during this feature expansion.
+PDFium is not affiliated with or endorsed by Google for this website.
+
+Added editable content export:
+pdf-lib 1.17.1 (MIT), https://github.com/Hopding/pdf-lib
+@pdf-lib/fontkit 1.1.1 (MIT), https://github.com/Hopding/fontkit
+Fontkit's browser build bundles pako 1.x. Attribution and terms are retained
+in LICENSE-fontkit.txt. No separate LICENSE file is provided by the fontkit
+npm package; its package metadata and README declare MIT.
+Noto Sans SC Regular (SIL OFL 1.1): LICENSE-NotoSansSC.txt.
+Unmodified installed font; copyright metadata: (c) 2014-2021 Adobe,
+with Reserved Font Name 'Source'. Official font license source:
+https://github.com/notofonts/noto-cjk/blob/main/Sans/LICENSE
+The complete font is embedded once per PDF containing added CJK text, to keep
+composite glyph outlines intact (approximately 6 MiB compressed).
+No paid API, OCR service or AI is used.

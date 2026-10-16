@@ -1,0 +1,113 @@
+{
+  "version": "20261014-1",
+  "runtime": "1.30.0",
+  "assets": [
+    {
+      "file": "models/art.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet_v3/art/scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 13562190,
+      "sha256": "00cc81aa5bda1e75d7171e2dafdb1a1890136d6167cd5718091315ee8449400c",
+      "decodedBytes": 16554788,
+      "decodedSha256": "faa388da0c0acae10840938284b9f0f0228013036e130c816782e1c20c468f6b"
+    },
+    {
+      "file": "models/art-light.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet_v3/art/noise0_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 13559488,
+      "sha256": "9e78ae238b470c3ca296d467d5ed1a180fc634747bd731e4ab60061c8f486c67",
+      "decodedBytes": 16554741,
+      "decodedSha256": "8ebf25acfd6c1602f06f09ba3005b5dbff84df9c66d4f4e93dd0d8db6eb9504c"
+    },
+    {
+      "file": "models/art-clean.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet_v3/art/noise1_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 13555978,
+      "sha256": "d0bbe1dea2ac288967a28dcb684a3e0cfb63fc0e4d0eba5aeb2c569bb4d3a8e0",
+      "decodedBytes": 16554741,
+      "decodedSha256": "3b8ffb1202e29fa435637e07565a8da04ae579e16aa8ab5d29bcee6a47cc9c25"
+    },
+    {
+      "file": "models/photo.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/photo/scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112683,
+      "sha256": "63d8a8f7a89d809a543e43d7d9660facf719e77ddeb3bac49d00a2ddcf718033",
+      "decodedBytes": 21292630,
+      "decodedSha256": "22a4880e452c22abde0ffbce1c125b0ddb7bdc4565f9745729a9037b273812ff"
+    },
+    {
+      "file": "models/photo-light.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/photo/noise0_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112234,
+      "sha256": "0e53ff51ea8c56a326b0f4d9a0802328bb536e94695bc76c743fc89e84960a66",
+      "decodedBytes": 21292630,
+      "decodedSha256": "5612ca55805d28023fd527c1c5c5d96c1c837e9694ef12a2aa359e73039ca689"
+    },
+    {
+      "file": "models/photo-clean.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/photo/noise1_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112499,
+      "sha256": "ac606ee4fa7329fe9256042f07b47b7aea0332f98ab8edd81310a58a040794c1",
+      "decodedBytes": 21292630,
+      "decodedSha256": "f8c818809730d47b5ffd41211071342f0f8985792c617188890cb46900644f95"
+    },
+    {
+      "file": "models/scan.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/art_scan/scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112874,
+      "sha256": "e01e6d272b2355be697fdfddc0b39cbd158054eb08cd0c85ee2d921a7e0a469d",
+      "decodedBytes": 21292630,
+      "decodedSha256": "700dd879bafdf70e3c220f94f60273b69cd41648b2d3dd98bba6dd9abf344167"
+    },
+    {
+      "file": "models/scan-light.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/art_scan/noise0_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112442,
+      "sha256": "b507ccc78238deb6e00834e2a526ba7711a957095ef99d820864d776242c3691",
+      "decodedBytes": 21292630,
+      "decodedSha256": "beca33140386b511f83a032cea685a6bfcffc3f121dad7bac33eb693fd689b6d"
+    },
+    {
+      "file": "models/scan-clean.onnx.bin",
+      "source": "https://unlimited.waifu2x.net/models/swin_unet/art_scan/noise1_scale2x.onnx",
+      "compression": "gzip",
+      "bytes": 16112399,
+      "sha256": "5b8437f7ef4215994a8d38c6bae1b400450284c6a4a6568f1f4c132fbbe3d9c2",
+      "decodedBytes": 21292630,
+      "decodedSha256": "e79b27ae4988f39869a68bb2332bc3768a4933e32891c7b8b3997f0012c10bc5"
+    },
+    {
+      "file": "ort/ort.webgpu.min.mjs",
+      "source": "onnxruntime-web@1.30.0/dist/ort.webgpu.min.mjs",
+      "bytes": 66349,
+      "sha256": "3dffff71811bc13a3a3d9591c57ca5ee5735b8f5f3eaf789510b02bb040ae3a0"
+    },
+    {
+      "file": "ort/ort-wasm-simd-threaded.asyncify.mjs",
+      "source": "onnxruntime-web@1.30.0/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 53057,
+      "sha256": "3d1c85995364bb643302fc6fd877a0c3ba5ae72401815e0f24828a53d9191e28"
+    },
+    {
+      "file": "ort/runtime-0.bin",
+      "source": "onnxruntime-web@1.30.0/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "offset": 0,
+      "bytes": 15728640,
+      "sha256": "bf0d249f9bc3c53601d4eecb09c2cf3944c15bd5a2f5c18760415c5e6404eeb2"
+    },
+    {
+      "file": "ort/runtime-1.bin",
+      "source": "onnxruntime-web@1.30.0/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "offset": 15728640,
+      "bytes": 11053274,
+      "sha256": "d98c27202fa86ed96c125173029efa72237bbe516bd9dfbe3690a9764199aa5b"
+    }
+  ]
+}

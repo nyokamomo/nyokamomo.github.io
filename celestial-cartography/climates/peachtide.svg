@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">浮叶镜原</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff7ec"/><stop offset="1" stop-color="#71b7a8"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path data-terrain-fill="true" d="M-8 115 C23 106 46 112 71 108 C98 103 115 109 136 103 L136 136 L-8 136 Z" fill="#e5a89c"/><path data-terrain-edge="true" d="M-8 115 C23 106 46 112 71 108 C98 103 115 109 136 103" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 83 C22 69 45 68 57 81 C44 90 25 92 12 83 Z" fill="#9b80aa" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M53 51 C67 38 94 41 108 54 C94 65 69 66 53 51 Z" fill="#e5a89c" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M75 83 C88 73 108 74 119 84 C107 93 88 92 75 83 Z" fill="#ffe1c0" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 91 V106 M80 63 V88 M98 93 V104" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 105 C37 102 44 102 52 103 M72 100 C84 96 93 98 102 99" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

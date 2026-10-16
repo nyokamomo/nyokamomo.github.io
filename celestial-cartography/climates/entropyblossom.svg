@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">逆生花劫</title>
+  <desc id="desc">异常纪元气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#093a42"/><stop offset="1" stop-color="#1b665e"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M49 20 C53 38 60 47 65 61 C70 47 78 37 83 20 Z" fill="#fce1a8" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M47 108 C51 90 59 79 65 65 C71 79 79 90 83 108 Z" fill="#f391a5" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 34 C43 50 52 58 64 63 C52 69 43 78 37 94 M94 34 C88 50 79 58 66 63 C79 69 88 78 94 94" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="65" cy="63" r="9" fill="#86e4d6" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 20 Q28 23 31 24 Q28 25 27 28 Q26 25 23 24 Q26 23 27 20 Z" fill="#fce1a8"/><path d="M103 101 Q104 104 107 105 Q104 106 103 109 Q102 106 99 105 Q102 104 103 101 Z" fill="#fce1a8"/>
+</svg>

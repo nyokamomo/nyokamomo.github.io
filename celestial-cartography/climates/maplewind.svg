@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">蓝脉环谷</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#daeafa"/><stop offset="1" stop-color="#7474a4"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M8 75 C13 45 48 27 78 37 C109 47 121 74 111 94 C95 116 48 118 19 101 C9 96 5 85 8 75 Z" fill="#d8a67c" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 74 C30 52 54 45 77 51 C99 58 107 77 98 91 C87 105 55 105 34 93 C25 88 22 81 25 74 Z" fill="#4f8caa" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 73 C47 62 61 60 76 65 C88 70 91 81 84 89 C74 95 56 92 48 85 C43 82 40 77 42 73 Z" fill="#3b466e" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M55 74 C66 70 73 72 79 78 M17 63 L30 66 M88 103 L97 111 M66 50 L69 37" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

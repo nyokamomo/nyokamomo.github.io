@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">硫焰热幕</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8e8d0"/><stop offset="1" stop-color="#ad9950"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M25 110 C18 90 43 73 39 53 C57 64 55 82 49 96 C73 70 68 45 84 25 C87 48 109 56 105 81 C101 103 83 113 65 113 Z" fill="#e2ba65" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 106 C42 83 62 74 63 57 C75 69 76 79 70 91 C88 74 88 64 91 52 C103 76 90 103 75 109 Z" fill="#fff0ae" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M59 109 C56 94 75 88 79 76 C85 91 81 103 74 110 Z" fill="#b8e8d0" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 34 Q27 37 30 38 Q27 39 26 42 Q25 39 22 38 Q25 37 26 34 Z" fill="#fff0ae"/><path d="M107 29 Q108 31 110 32 Q108 33 107 35 Q106 33 104 32 Q106 31 107 29 Z" fill="#b8e8d0"/>
+</svg>

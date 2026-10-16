@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">梦羽迁潮</title>
+  <desc id="desc">奇特生态气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c8edff"/><stop offset="1" stop-color="#264d9b"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M13 91 C38 63 66 49 111 30" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 78 C15 60 25 52 41 61 C43 72 35 82 23 78 Z" fill="#ffca92" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 63 C45 40 57 35 72 47 C70 59 61 67 50 63 Z" fill="#fff0bd" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M78 46 C75 24 89 20 103 32 C102 42 91 50 78 46 Z" fill="#ffca92" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M43 96 C36 81 45 74 59 82 C60 94 52 101 43 96 Z" fill="#dc6fa2" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 74 C86 59 96 55 110 63 C109 75 101 79 90 74 Z" fill="#fff0bd" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 29 Q17 31 19 32 Q17 33 16 35 Q15 33 13 32 Q15 31 16 29 Z" fill="#c8edff"/>
+</svg>

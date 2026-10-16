@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">火山灰幕</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4cbd3"/><stop offset="1" stop-color="#686272"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M60 58 C50 52 62 45 57 39 C43 37 40 25 50 20 C49 10 65 9 70 17 C81 13 90 21 85 28 C97 36 86 47 75 43 C68 48 75 54 69 61 Z" fill="#a8979a" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M-8 123 L49 68 L58 72 L69 66 L136 121 L136 136 L-8 136 Z" fill="#81707c"/><path d="M69 66 L136 121 L94 119 L61 79 Z" fill="#413e51"/><path d="M49 68 L58 72 L69 66 L80 75 L67 82 L61 78 L54 83 L39 78 Z" fill="#d6bab0"/><path d="M39 78 L54 83 L61 78 L67 82 L80 75" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M-8 123 L49 68 L58 72 L69 66 L136 121" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 116 C27 110 47 120 70 114 C93 108 115 113 136 112 L136 136 L-8 136 Z" fill="#a8979a"/><path data-terrain-edge="true" d="M-8 116 C27 110 47 120 70 114 C93 108 115 113 136 112" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

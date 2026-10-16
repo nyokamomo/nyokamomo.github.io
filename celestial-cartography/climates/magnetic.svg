@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">磁暴天幕</title>
+  <desc id="desc">奇特生态气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2c2e55"/><stop offset="1" stop-color="#454681"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M18 17 Q19 20 22 21 Q19 22 18 25 Q17 22 14 21 Q17 20 18 17 Z" fill="#c4c8f3"/><path d="M105 14 Q106 17 109 18 Q106 19 105 22 Q104 19 101 18 Q104 17 105 14 Z" fill="#c4c8f3"/><path d="M-8 68 C23 66 30 25 55 29 C80 33 92 64 136 31 L136 47 C92 83 74 46 54 45 C34 44 25 85 -8 83 Z" fill="#537ab0" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M-8 42 C14 42 27 12 43 17 C58 23 68 53 84 49 C99 46 112 31 136 34 L136 43 C111 41 101 58 85 60 C63 64 57 39 41 33 C28 27 18 59 -8 55 Z" fill="#50b7b7" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 113 C18 92 40 106 60 98 C81 90 108 99 136 93 L136 136 L-8 136 Z" fill="#2c2e55"/><path data-terrain-edge="true" d="M-8 113 C18 92 40 106 60 98 C81 90 108 99 136 93" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

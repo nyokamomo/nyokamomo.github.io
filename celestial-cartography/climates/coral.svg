@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">炽热旱季</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fee0b9"/><stop offset="1" stop-color="#c17a54"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <circle cx="91" cy="31" r="14" fill="#ffe0a5" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M91 8 V11 M91 51 V57 M69 31 H64 M111 31 H117 M76 16 L72 12 M106 46 L110 50 M106 16 L110 12 M76 46 L72 50" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 95 C20 79 43 87 66 90 C92 94 113 78 136 84 L136 136 L-8 136 Z" fill="#e7b077"/><path data-terrain-edge="true" d="M-8 95 C20 79 43 87 66 90 C92 94 113 78 136 84" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 114 C25 101 49 111 73 110 C98 109 115 102 136 105 L136 136 L-8 136 Z" fill="#ffe0a5"/><path data-terrain-edge="true" d="M-8 114 C25 101 49 111 73 110 C98 109 115 102 136 105" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 114 L38 121 L34 129 M38 121 L47 116 M84 117 L95 124 L104 119" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

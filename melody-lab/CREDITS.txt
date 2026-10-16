@@ -1,0 +1,24 @@
+Nyokore Melody Lab — sample credits
+
+Piano: Salamander Grand Piano, Alexander Holm (Yamaha C5).
+https://github.com/Tonejs/audio/tree/master/salamander
+License: Creative Commons Attribution 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+Nylon guitar: quartertone, classicalguitar-multisampled (Freesound pack 11573).
+Cello: flcellogrl, real-cello-notes (Freesound pack 12408).
+Both redistributed and edited for consistency by N. P. Brosowsky in tonejs-instruments.
+https://github.com/nbrosowsky/tonejs-instruments
+https://github.com/nbrosowsky/tonejs-instruments/blob/master/sample-source-info.txt
+Samples license: Creative Commons Attribution 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+Nyokore modifications: selected a limited pitch range; original downloaded MP3 files
+are unchanged. Runtime playback uses pitch shifting, gain adjustment and envelopes.
+Cello sustain loops use a crossfade generated in memory; the synthesizer uses native
+Web Audio oscillators. Attribution does not imply endorsement by the sample authors.
+
+MP3 export: wasm-media-encoders by arseneyr, using the LAME MP3 encoder compiled
+to WebAssembly. wasm-media-encoders is distributed under the MIT License.
+https://github.com/arseneyr/wasm-media-encoders
+https://github.com/arseneyr/wasm-media-encoders/blob/master/LICENSE

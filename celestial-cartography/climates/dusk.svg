@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">永暮微光</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4d4b89"/><stop offset="1" stop-color="#7975b6"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M91 18 Q92 22 96 23 Q92 24 91 28 Q90 24 86 23 Q90 22 91 18 Z" fill="#e1d6f3"/><path d="M109 43 Q110 46 113 47 Q110 48 109 51 Q108 48 105 47 Q108 46 109 43 Z" fill="#e1d6f3"/><circle cx="45" cy="79" r="25" fill="#f2d4bc" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 90 C20 84 45 96 71 88 C94 80 114 84 136 77 L136 136 L-8 136 Z" fill="#d5a2bf"/><path data-terrain-edge="true" d="M-8 90 C20 84 45 96 71 88 C94 80 114 84 136 77" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 113 C20 111 45 99 68 105 C91 115 114 100 136 106 L136 136 L-8 136 Z" fill="#b575a2"/><path data-terrain-edge="true" d="M-8 113 C20 111 45 99 68 105 C91 115 114 100 136 106" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

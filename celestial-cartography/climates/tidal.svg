@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">潮汐失序</title>
+  <desc id="desc">奇特生态气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bde3ee"/><stop offset="1" stop-color="#287e96"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <circle cx="31" cy="26" r="12" fill="#cfebe4" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="24" r="7" fill="#bde3ee" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 94 C18 98 22 63 47 66 C68 69 50 88 74 93 C100 100 113 73 136 79 L136 136 L-8 136 Z" fill="#83c9cd"/><path data-terrain-edge="true" d="M-8 94 C18 98 22 63 47 66 C68 69 50 88 74 93 C100 100 113 73 136 79" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 123 C14 126 38 99 63 106 C91 114 100 98 116 96 C127 94 134 99 136 102 L136 136 L-8 136 Z" fill="#4aa1b3"/><path data-terrain-edge="true" d="M-8 123 C14 126 38 99 63 106 C91 114 100 98 116 96 C127 94 134 99 136 102" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 79 C38 72 48 71 53 76" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

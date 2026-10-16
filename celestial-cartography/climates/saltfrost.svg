@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">盐晶悬瀑</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e9deed"/><stop offset="1" stop-color="#756b84"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M25 25 L35 18 L45 25 L45 38 L35 45 L25 38 Z" fill="#f6e9db" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M66 23 L79 14 L92 23 L92 42 L79 51 L66 42 Z" fill="#dec6bd" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M101 38 L109 32 L117 38 L117 50 L109 56 L101 50 Z" fill="#f6e9db" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 47 V103 M79 53 V117 M109 57 V102 M24 68 V105 M91 75 V110" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 71 L35 78 L40 71 Z M72 78 L79 87 L86 78 Z M103 77 L109 85 L115 77 Z" fill="#e9deed" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 120 C20 112 46 117 72 112 C98 108 117 113 136 107 L136 136 L-8 136 Z" fill="#9c7893"/><path data-terrain-edge="true" d="M-8 120 C20 112 46 117 72 112 C98 108 117 113 136 107" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

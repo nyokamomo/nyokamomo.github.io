@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">骤凝冰帘</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d6f5fa"/><stop offset="1" stop-color="#38688f"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M19 16 H110 L104 32 L111 40 L100 50 L102 69 L90 78 L88 97 L73 105 L68 83 L58 94 L49 72 L40 81 L34 62 L24 66 L29 43 L18 38 Z" fill="#d6f5fa" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M33 25 L34 60 M51 24 L49 70 M69 24 L68 82 M88 24 L88 76 M103 25 L100 48" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 99 L47 110 M96 100 L99 111" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 121 C20 115 47 119 73 114 C99 110 116 114 136 109 L136 136 L-8 136 Z" fill="#6baabd"/><path data-terrain-edge="true" d="M-8 121 C20 115 47 119 73 114 C99 110 116 114 136 109" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

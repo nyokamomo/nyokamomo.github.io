@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">漂光水母林</title>
+  <desc id="desc">奇特生态气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e8faff"/><stop offset="1" stop-color="#7f6caa"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M18 60 C23 27 52 19 69 34 C88 29 106 46 106 62 C77 73 45 74 18 60 Z" fill="#a8dacb" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 60 C43 46 78 48 106 62 M41 68 C36 83 42 91 37 108 M59 70 C55 91 64 93 58 113 M77 70 C81 87 73 101 78 112 M95 67 C102 83 95 92 99 106" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="34" cy="36" r="5" fill="#f9d8f1"/><path d="M104 28 Q105 31 108 32 Q105 33 104 36 Q103 33 100 32 Q103 31 104 28 Z" fill="#e8faff"/>
+</svg>

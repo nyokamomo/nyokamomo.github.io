@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">迟暮神谣</title>
+  <desc id="desc">异常纪元气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#222b4d"/><stop offset="1" stop-color="#616882"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <circle cx="43" cy="63" r="24" fill="#222b4d" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M39 29 C72 25 98 43 101 64 C101 85 74 104 40 98" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M54 19 C92 24 115 46 113 67 C112 91 88 111 58 112" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M57 44 C68 48 71 56 70 65 C68 75 62 80 54 83" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M102 29 Q103 32 106 33 Q103 34 102 37 Q101 34 98 33 Q101 32 102 29 Z" fill="#f5d9c3"/><path d="M24 28 Q25 30 27 31 Q25 32 24 34 Q23 32 21 31 Q23 30 24 28 Z" fill="#d8f5e7"/>
+</svg>

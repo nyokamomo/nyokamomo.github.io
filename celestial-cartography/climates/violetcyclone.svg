@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">磁旋电暴</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2e275e"/><stop offset="1" stop-color="#7152a0"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M64 13 C99 14 116 42 108 72 C98 108 52 118 25 91 C4 69 15 33 44 20" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 30 C88 30 99 48 94 68 C88 89 58 98 40 81 C27 68 32 48 49 39" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 49 C77 48 84 57 79 69 C74 79 59 80 52 70 C46 61 51 53 62 49 Z" fill="#2e275e" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 34 L41 42 L31 48 Z M100 87 L88 84 L96 73 Z M68 16 L64 29 L74 22 Z" fill="#ffd2ba" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="65" cy="64" r="5" fill="#e3d9fb" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

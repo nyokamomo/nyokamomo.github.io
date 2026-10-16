@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">神谕残门</title>
+  <desc id="desc">异常纪元气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0d244b"/><stop offset="1" stop-color="#193e74"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M43 22 C19 41 21 83 44 103 L53 90 C40 76 40 50 54 35 Z" fill="#bf9ac9" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M85 22 C109 41 107 83 84 103 L75 90 C88 76 88 50 74 35 Z" fill="#655aa6" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M51 24 L63 16 L76 24 M51 102 L63 111 L76 102" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M63 43 L79 62 L63 83 L47 62 Z" fill="#ffe6ac" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M63 55 Q64 60 69 61 Q64 62 63 67 Q62 62 57 61 Q62 60 63 55 Z" fill="#8de7e1"/>
+</svg>

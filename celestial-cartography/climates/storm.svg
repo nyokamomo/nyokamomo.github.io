@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">永续雷暴</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c2d4f1"/><stop offset="1" stop-color="#405fa3"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M29 55 C19 54 18 39 29 36 C28 22 47 19 55 29 C62 14 86 20 87 34 C104 29 117 44 107 55 Z" fill="#283761" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 108 C21 96 48 106 74 106 C96 106 116 96 136 99 L136 136 L-8 136 Z" fill="#809ec6"/><path data-terrain-edge="true" d="M-8 108 C21 96 48 106 74 106 C96 106 116 96 136 99" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M65 60 L49 78 H62 L54 98 L86 70 H72 L81 60 Z" fill="#e0d5a3" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 66 L27 76 M103 65 L98 75" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

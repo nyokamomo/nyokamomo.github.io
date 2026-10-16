@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">棱光幻雾</title>
+  <desc id="desc">异常纪元气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e0e8f3"/><stop offset="1" stop-color="#80a7bd"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path d="M20 79 A44 44 0 0 1 108 79 H98 A34 34 0 0 0 30 79 Z" fill="#a7b9bc"/><path d="M30 79 A34 34 0 0 1 98 79 H88 A24 24 0 0 0 40 79 Z" fill="#d6aed0"/><path d="M40 79 A24 24 0 0 1 88 79 H78 A14 14 0 0 0 50 79 Z" fill="#f9e6b7"/><path d="M20 79 A44 44 0 0 1 108 79 M30 79 A34 34 0 0 1 98 79 M40 79 A24 24 0 0 1 88 79 M50 79 A14 14 0 0 1 78 79" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 83 C7 76 16 67 24 72 C32 61 45 69 43 77 C53 79 50 88 41 88 H20 Q14 88 13 83 Z" fill="#e0e8f3" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M79 85 C71 77 82 69 88 73 C91 62 106 64 109 75 C120 74 124 86 113 88 H86 Q82 88 79 85 Z" fill="#e0e8f3" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 114 C23 105 47 114 75 109 C103 104 117 114 136 108 L136 136 L-8 136 Z" fill="#d6aed0"/><path data-terrain-edge="true" d="M-8 114 C23 105 47 114 75 109 C103 104 117 114 136 108" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

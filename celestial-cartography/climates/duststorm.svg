@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">赤沙风暴</title>
+  <desc id="desc">极端气象气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#efc3ac"/><stop offset="1" stop-color="#ad624e"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <circle cx="98" cy="20" r="6" fill="#efcda0" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 34 C37 27 49 39 68 32 C79 27 84 28 88 30 M13 50 C40 41 52 55 76 47 C92 42 106 47 115 51 M22 68 C42 61 55 71 72 66" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 99 C15 91 34 75 56 85 C82 99 111 80 136 89 L136 136 L-8 136 Z" fill="#d99263"/><path data-terrain-edge="true" d="M-8 99 C15 91 34 75 56 85 C82 99 111 80 136 89" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path data-terrain-fill="true" d="M-8 122 C23 109 52 100 77 109 C99 118 118 102 136 109 L136 136 L-8 136 Z" fill="#a65f43"/><path data-terrain-edge="true" d="M-8 122 C23 109 52 100 77 109 C99 118 118 102 136 109" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

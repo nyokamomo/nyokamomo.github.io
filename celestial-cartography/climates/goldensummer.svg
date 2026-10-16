@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">琥珀环林</title>
+  <desc id="desc">宜居季节气候的卡通图标</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dceaf7"/><stop offset="1" stop-color="#335395"/></linearGradient></defs>
+  <rect width="128" height="128" fill="url(#sky)"/>
+  <path data-terrain-fill="true" d="M-8 120 C25 112 47 118 72 113 C99 107 116 112 136 106 L136 136 L-8 136 Z" fill="#905b89"/><path data-terrain-edge="true" d="M-8 120 C25 112 47 118 72 113 C99 107 116 112 136 106" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M45 110 V69 M92 108 V73" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45" cy="53" r="22" fill="#daa75b" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45" cy="53" r="10" fill="#1c2f60" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="93" cy="61" r="15" fill="#ffe9ae" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="93" cy="61" r="7" fill="#1c2f60" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 53 H32 M58 53 H69 M78 61 H85 M101 61 H110" fill="none" stroke="#293f52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
