@@ -1,11 +1,24 @@
 import { init } from './pdfium.js';
 import { PdfWorkspace } from './workspace.mjs';
-let workspace,fontBytes;
+const fontFiles={
+  'noto-sans-sc':'NotoSansSC-Regular.otf',
+  'noto-serif-sc':'NotoSerifSC-Regular.otf',
+  'noto-sans-jp':'NotoSansJP-Regular.otf',
+  'noto-serif-jp':'NotoSerifJP-Regular.otf',
+  'noto-sans-kr':'NotoSansKR-Regular.otf',
+  'noto-serif-kr':'NotoSerifKR-Regular.otf'
+};
+let workspace;const fontBytes=new Map();
+async function loadFont(name='noto-sans-sc') {
+  if(!fontFiles[name])throw new Error('不支持所选字体。');
+  if(!fontBytes.has(name)){const response=await fetch(new URL(`./${fontFiles[name]}`,import.meta.url));if(!response.ok)throw new Error('无法加载所选字体。');fontBytes.set(name,new Uint8Array(await response.arrayBuffer()));}
+  return fontBytes.get(name);
+}
 const ready=(async()=> {
   const response=await fetch(new URL('./pdfium.wasm',import.meta.url));
   if(!response.ok) throw new Error('无法加载 PDF 引擎，请刷新后重试。');
   const e=await init({wasmBinary:await response.arrayBuffer()});e.PDFiumExt_Init();
-  workspace=new PdfWorkspace(e,async()=>{if(!fontBytes){const f=await fetch(new URL('./NotoSansSC-Regular.ttf',import.meta.url));if(!f.ok)throw new Error('无法加载中文字体。');fontBytes=new Uint8Array(await f.arrayBuffer());}return fontBytes;});
+  workspace=new PdfWorkspace(e,loadFont);
 })();
 async function dispatch(type,args) {
   await ready;

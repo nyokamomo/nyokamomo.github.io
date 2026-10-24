@@ -1,5 +1,10 @@
 export const TYPES=['text','image','pen','highlight','rect','shape','arrow'];
-export const TEXT_FONTS=['sans','sans-bold','sans-italic','serif','serif-bold','serif-italic','mono','mono-bold','mono-italic'];
+export const TEXT_FONT_FAMILIES=['noto-sans-sc','noto-serif-sc','noto-sans-jp','noto-serif-jp','noto-sans-kr','noto-serif-kr','sans','serif','mono'];
+export const TEXT_FONTS=[...TEXT_FONT_FAMILIES,'sans-bold','sans-italic','serif-bold','serif-italic','mono-bold','mono-italic'];
+export function normalizeTextStyle(value={}) {
+  const legacy=String(value.font??'sans'),bold=legacy.endsWith('-bold'),italic=legacy.endsWith('-italic'),font=bold||italic?legacy.replace(/-(bold|italic)$/,''):legacy;
+  return{font:TEXT_FONT_FAMILIES.includes(font)?font:'sans',size:value.size,color:value.color,bold:value.bold===undefined?bold:!!value.bold,italic:value.italic===undefined?italic:!!value.italic,underline:!!value.underline,letterSpacing:Number.isFinite(value.letterSpacing)?value.letterSpacing:0};
+}
 export function textSizeFromGlyphs(glyphs,fallback=20,pageHeight=800) {
   const exact=(glyphs??[]).map(glyph=>glyph.fontSize).filter(value=>Number.isFinite(value)&&value>0);
   const measured=(glyphs??[]).map(glyph=>glyph.raw?.length>=4?Math.abs(glyph.raw[1]-glyph.raw[3]):glyph.height*pageHeight).filter(value=>Number.isFinite(value)&&value>0);
@@ -65,6 +70,48 @@ export function snapLinePoint(start,point,size) {
   if(Math.abs(uy)>.000001)limits.push(((uy>0?1-start.y:start.y)*size.height)/Math.abs(uy));
   const distance=Math.min(length,...limits);
   return{x:start.x+ux*distance/size.width,y:start.y+uy*distance/size.height};
+}
+function stabilizePenPoints(points) {
+  let current=points;
+  for(let pass=0;pass<4&&current.length>2;pass++){
+    const next=[current[0]];
+    for(let i=1;i<current.length-1;i++){
+      const before=current[i-1],point=current[i],after=current[i+1];
+      next.push({x:(before.x+point.x*2+after.x)/4,y:(before.y+point.y*2+after.y)/4});
+    }
+    next.push(current.at(-1));current=next;
+  }
+  return current;
+}
+function pointDistanceToSegment(point,start,end) {
+  const dx=end.x-start.x,dy=end.y-start.y,lengthSquared=dx*dx+dy*dy;
+  if(!lengthSquared)return Math.hypot(point.x-start.x,point.y-start.y);
+  const position=Math.max(0,Math.min(1,((point.x-start.x)*dx+(point.y-start.y)*dy)/lengthSquared)),x=start.x+dx*position,y=start.y+dy*position;
+  return Math.hypot(point.x-x,point.y-y);
+}
+function simplifyPenPoints(points,tolerance) {
+  if(points.length<=2)return points;
+  const keep=new Uint8Array(points.length),stack=[[0,points.length-1]];keep[0]=1;keep[points.length-1]=1;
+  while(stack.length){const [start,end]=stack.pop();let furthest=-1,distance=0;for(let i=start+1;i<end;i++){const next=pointDistanceToSegment(points[i],points[start],points[end]);if(next>distance){distance=next;furthest=i;}}if(furthest>=0&&distance>tolerance){keep[furthest]=1;stack.push([start,furthest],[furthest,end]);}}
+  return points.filter((_,index)=>keep[index]);
+}
+function cappedControl(origin,target,limit) {
+  const dx=target.x-origin.x,dy=target.y-origin.y,distance=Math.hypot(dx,dy),scale=distance>limit?limit/distance:1;
+  return{x:origin.x+dx*scale,y:origin.y+dy*scale};
+}
+export function smoothPenGeometry(points,width=1,height=1,tolerance=2.5) {
+  const scaled=[];
+  for(const point of points??[]){const next={x:point[0]*width,y:point[1]*height},previous=scaled.at(-1);if(!previous||Math.hypot(next.x-previous.x,next.y-previous.y)>.2)scaled.push(next);}
+  if(scaled.length<2)return null;
+  const knots=simplifyPenPoints(stabilizePenPoints(scaled),Math.max(.5,tolerance));
+  if(knots.length===2)return{start:knots[0],curves:[],end:knots[1],points:knots};
+  const curves=[],tension=.85/6;
+  for(let i=0;i<knots.length-1;i++){
+    const previous=knots[i-1]??knots[i],start=knots[i],end=knots[i+1],next=knots[i+2]??end,segmentLength=Math.hypot(end.x-start.x,end.y-start.y),limit=segmentLength*.42;
+    const cp1=cappedControl(start,{x:start.x+(end.x-previous.x)*tension,y:start.y+(end.y-previous.y)*tension},limit),cp2=cappedControl(end,{x:end.x-(next.x-start.x)*tension,y:end.y-(next.y-start.y)*tension},limit);
+    curves.push({cp1,cp2,end});
+  }
+  return{start:knots[0],curves,end:knots.at(-1),points:knots};
 }
 function linePagePoints(object,size) {
   const path=object.points??[[0,0],[1,1]];
@@ -173,13 +220,13 @@ export function validateObjects(input,count) {
     if(o.placement!==undefined&&!['under','over'].includes(o.placement))throw new Error('对象层级无效。');
     const result={id:o.id,page:o.page,type:o.type,x:o.x,y:o.y,width:o.width,height:o.height,rotation:o.rotation%360,opacity:o.opacity,size:o.size,color:o.color};if(o.placement)result.placement=o.placement;
     if(o.type==='text') {
-      if(typeof o.text!=='string'||o.text.length>10000||!TEXT_FONTS.includes(o.font)||!['left','center','right'].includes(o.align))throw new Error('文字或字体设置无效。');
+      if(typeof o.text!=='string'||o.text.length>10000||!TEXT_FONTS.includes(o.font)||!['left','center','right'].includes(o.align)||['bold','italic','underline'].some(key=>o[key]!==undefined&&typeof o[key]!=='boolean')||(o.letterSpacing!==undefined&&(!Number.isFinite(o.letterSpacing)||o.letterSpacing< -20||o.letterSpacing>100))||(o.lineHeight!==undefined&&(!Number.isFinite(o.lineHeight)||o.lineHeight<.5||o.lineHeight>5)))throw new Error('文字或字体设置无效。');
       text+=o.text.length;if(text>200000)throw new Error('新增文字总量过大，请拆分工程。');
-      const value=o.text.replace(/\r\n?/g,'\n').replace(/\t/g,'    '),runs=o.runs??[];
+      const value=o.text.replace(/\r\n?/g,'\n').replace(/\t/g,'    '),runs=o.runs??[],baseStyle=normalizeTextStyle(o);
       if(!Array.isArray(runs)||runs.length>2000)throw new Error('文字局部样式过多。');
-      const cleanRuns=runs.map(run=>{if(!run||!Number.isInteger(run.start)||!Number.isInteger(run.end)||run.start<0||run.start>=run.end||run.end>value.length||!TEXT_FONTS.includes(run.font)||!Number.isFinite(run.size)||run.size<1||run.size>160||!/^#[0-9a-f]{6}$/i.test(run.color))throw new Error('文字局部样式无效。');return{start:run.start,end:run.end,font:run.font,size:run.size,color:run.color};}).sort((a,b)=>a.start-b.start||a.end-b.end);
+      const cleanRuns=runs.map(run=>{if(!run||!Number.isInteger(run.start)||!Number.isInteger(run.end)||run.start<0||run.start>=run.end||run.end>value.length||!TEXT_FONTS.includes(run.font)||!Number.isFinite(run.size)||run.size<1||run.size>160||!/^#[0-9a-f]{6}$/i.test(run.color)||['bold','italic','underline'].some(key=>run[key]!==undefined&&typeof run[key]!=='boolean')||(run.letterSpacing!==undefined&&(!Number.isFinite(run.letterSpacing)||run.letterSpacing< -20||run.letterSpacing>100)))throw new Error('文字局部样式无效。');const style=normalizeTextStyle(run);return{start:run.start,end:run.end,font:style.font,size:style.size,color:style.color,...(style.bold?{bold:true}:{}),...(style.italic?{italic:true}:{}),...(style.underline?{underline:true}:{}),...(style.letterSpacing?{letterSpacing:style.letterSpacing}:{})};}).sort((a,b)=>a.start-b.start||a.end-b.end);
       if(cleanRuns.some((run,i)=>i>0&&run.start<cleanRuns[i-1].end))throw new Error('文字局部样式范围重叠。');
-      Object.assign(result,{text:value,font:o.font,align:o.align,...(cleanRuns.length?{runs:cleanRuns}:{})});
+      Object.assign(result,{text:value,font:baseStyle.font,align:o.align,...(baseStyle.bold?{bold:true}:{}),...(baseStyle.italic?{italic:true}:{}),...(baseStyle.underline?{underline:true}:{}),...(baseStyle.letterSpacing?{letterSpacing:baseStyle.letterSpacing}:{}),...(o.lineHeight!==undefined&&o.lineHeight!==1.3?{lineHeight:o.lineHeight}:{}),...(cleanRuns.length?{runs:cleanRuns}:{})});
     }
     if(o.type==='image') {
       if(typeof o.data!=='string'||!/^data:image\/(png|jpeg);base64,[a-zA-Z0-9+/]+=*$/.test(o.data)||o.data.length>9*1024*1024)throw new Error('图片数据无效，单张最多 6 MiB。');
@@ -197,6 +244,10 @@ export function validateObjects(input,count) {
       if(!Array.isArray(path)||path.length<2||path.length>10000||path.some(p=>!Array.isArray(p)||p.length!==2||p.some(v=>!Number.isFinite(v)||v<0||v>1)))throw new Error('笔迹数据无效。');
       points+=path.length;if(points>100000)throw new Error('笔迹总量过大，请拆分工程。');
       result.points=path.map(p=>[...p]);
+      if(o.type==='pen'){
+        if(o.penMode!==undefined&&!['fill','line'].includes(o.penMode))throw new Error('画笔模式无效。');
+        result.penMode=o.penMode??'fill';
+      }
       if(o.type==='arrow'){
         if(o.lineStyle!==undefined&&!['arrow','dashed','solid'].includes(o.lineStyle))throw new Error('线段种类无效。');
         result.lineStyle=o.lineStyle??'arrow';
@@ -238,11 +289,11 @@ export function textParagraphs(chars,textChars) {
   if(current.length)groups.push(current.flat());
   return groups.map(group=>{const box=bounds(group),ids=group.map(c=>c.id),idSet=new Set(ids),first=Math.min(...ids),last=Math.max(...ids);let text='';for(let id=first;id<=last;id++){const value=values.get(id)??'';if(idSet.has(id)||/^\s+$/.test(value))text+=value;}return{...box,ids,text:text.replace(/\r\n?/g,'\n').replace(/\n{3,}/g,'\n\n').trim()};}).filter(p=>p.text);
 }
-const sameStyle=(a,b)=>a.font===b.font&&a.size===b.size&&a.color===b.color;
-export function textStyleAt(object,index) {const run=object.runs?.find(item=>index>=item.start&&index<item.end);return run?{font:run.font,size:run.size,color:run.color}:{font:object.font,size:object.size,color:object.color};}
+const sameStyle=(a,b)=>a.font===b.font&&a.size===b.size&&a.color===b.color&&a.bold===b.bold&&a.italic===b.italic&&a.underline===b.underline&&a.letterSpacing===b.letterSpacing;
+export function textStyleAt(object,index) {const run=object.runs?.find(item=>index>=item.start&&index<item.end);return normalizeTextStyle(run??object);}
 function stylesToRuns(styles,object) {
-  const base={font:object.font,size:object.size,color:object.color},runs=[];let start=0;
-  while(start<styles.length){let end=start+1;while(end<styles.length&&sameStyle(styles[start],styles[end]))end++;if(!sameStyle(styles[start],base))runs.push({start,end,...styles[start]});start=end;}
+  const base=normalizeTextStyle(object),runs=[];let start=0;
+  while(start<styles.length){let end=start+1;while(end<styles.length&&sameStyle(styles[start],styles[end]))end++;if(!sameStyle(styles[start],base)){const style=styles[start];runs.push({start,end,font:style.font,size:style.size,color:style.color,...(style.bold?{bold:true}:{}),...(style.italic?{italic:true}:{}),...(style.underline?{underline:true}:{}),...(style.letterSpacing?{letterSpacing:style.letterSpacing}:{})});}start=end;}
   return runs;
 }
 export function textSegments(object) {

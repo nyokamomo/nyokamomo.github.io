@@ -1,6 +1,13 @@
-import {PDFDocument,StandardFonts,rgb,pushGraphicsState,popGraphicsState,concatTransformationMatrix,setGraphicsState,setLineCap,setLineJoin,setDashPattern,restoreDashPattern,moveTo,lineTo,appendBezierCurve,appendQuadraticCurve,closePath,setLineWidth,setFillingColor,setStrokingColor,fill as fillPath,stroke as strokePath,fillAndStroke} from './pdf-lib.js';
+import {PDFDocument,StandardFonts,rgb,degrees,pushGraphicsState,popGraphicsState,concatTransformationMatrix,setGraphicsState,setLineCap,setLineJoin,setDashPattern,restoreDashPattern,moveTo,lineTo,appendBezierCurve,appendQuadraticCurve,closePath,setLineWidth,setFillingColor,setStrokingColor,fill as fillPath,stroke as strokePath,fillAndStroke,drawObject as drawXObject} from './pdf-lib.js';
 import fontkit from './fontkit.js';
-import {arrowHeadSegments,filledArrowShape,lineDashPattern,textSegments} from './objects.mjs';
+import {arrowHeadSegments,filledArrowShape,lineDashPattern,smoothPenGeometry,textSegments} from './objects.mjs';
+const CJK_FONTS=new Set(['noto-sans-sc','noto-serif-sc','noto-sans-jp','noto-serif-jp','noto-sans-kr','noto-serif-kr']);
+function fallbackCjkFont(character) {
+  const code=character.codePointAt(0)??0;
+  if((code>=0xac00&&code<=0xd7af)||(code>=0x1100&&code<=0x11ff)||(code>=0x3130&&code<=0x318f))return'noto-sans-kr';
+  if((code>=0x3040&&code<=0x30ff)||(code>=0x31f0&&code<=0x31ff))return'noto-sans-jp';
+  return'noto-sans-sc';
+}
 function color(hex) {return rgb(...[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255));}
 function quadraticGeometry(points,w,h) {
   if(points.length!==3)return null;
@@ -33,6 +40,16 @@ function drawShape(page,o,w,h) {
   const points=o.shape==='triangle'?[{x:w/2,y:0},{x:w,y:h},{x:0,y:h}]:[{x:0,y:0},{x:w,y:0},{x:w,y:h},{x:0,y:h}],operators=[setLineJoin(1)];
   if(fill)operators.push(setFillingColor(color(fill)));if(stroke)operators.push(setStrokingColor(color(stroke)),setLineWidth(o.size));operators.push(...roundedPolygon(points,radius),fill&&stroke?fillAndStroke():fill?fillPath():strokePath());page.pushOperators(...operators);
 }
+function paintTransparencyGroup(page,doc,operators,w,h,padding=24) {
+  const stream=doc.context.formXObject(operators,{BBox:[-padding,-padding,w+padding,h+padding],Group:{Type:'Group',S:'Transparency',I:true,K:false}}),reference=doc.context.register(stream),key=page.node.newXObject('MatrixVector',reference);
+  page.pushOperators(drawXObject(key));
+}
+function penStrokeOperators(points,w,h,strokeColor,width,smooth=false) {
+  const operators=[setLineCap(1),setLineJoin(1),setStrokingColor(strokeColor),setLineWidth(width)],geometry=smooth?smoothPenGeometry(points,w,h,Math.max(8,width*2.5)):null;
+  if(geometry){operators.push(moveTo(geometry.start.x,geometry.start.y));if(geometry.curves.length)for(const curve of geometry.curves)operators.push(appendBezierCurve(curve.cp1.x,curve.cp1.y,curve.cp2.x,curve.cp2.y,curve.end.x,curve.end.y));else operators.push(lineTo(geometry.end.x,geometry.end.y));}
+  else{operators.push(moveTo(points[0][0]*w,points[0][1]*h));for(let i=1;i<points.length;i++)operators.push(lineTo(points[i][0]*w,points[i][1]*h));}
+  operators.push(strokePath());return operators;
+}
 export function wrapText(text,font,size,width) {
   const lines=[];
   for(const paragraph of text.split('\n')) {let line='';for(const ch of paragraph){if(line&&font.widthOfTextAtSize(line+ch,size)>width){lines.push(line);line=ch;}else line+=ch;}lines.push(line);}
@@ -43,15 +60,16 @@ export async function composePdf(bytes,objects,fontBytes) {
   const doc=await PDFDocument.load(bytes);doc.registerFontkit(fontkit);const fonts=new Map(),images=new Map(),pages=doc.getPages(),originalContents=new Map();
   for(const page of pages){page.node.normalize();originalContents.set(page,[...(page.node.Contents()?.asArray?.()??[])]);}
   const standardFont={
-    sans:StandardFonts.Helvetica,'sans-bold':StandardFonts.HelveticaBold,'sans-italic':StandardFonts.HelveticaOblique,
-    serif:StandardFonts.TimesRoman,'serif-bold':StandardFonts.TimesRomanBold,'serif-italic':StandardFonts.TimesRomanItalic,
-    mono:StandardFonts.Courier,'mono-bold':StandardFonts.CourierBold,'mono-italic':StandardFonts.CourierOblique
+    'sans|false|false':StandardFonts.Helvetica,'sans|true|false':StandardFonts.HelveticaBold,'sans|false|true':StandardFonts.HelveticaOblique,'sans|true|true':StandardFonts.HelveticaBoldOblique,
+    'serif|false|false':StandardFonts.TimesRoman,'serif|true|false':StandardFonts.TimesRomanBold,'serif|false|true':StandardFonts.TimesRomanItalic,'serif|true|true':StandardFonts.TimesRomanBoldItalic,
+    'mono|false|false':StandardFonts.Courier,'mono|true|false':StandardFonts.CourierBold,'mono|false|true':StandardFonts.CourierOblique,'mono|true|true':StandardFonts.CourierBoldOblique
   };
-  async function font(name,forceCjk=false) {
-    const key=forceCjk?'cjk':name;
-    // This Noto font contains composite outlines that fontkit's subset writer
-    // drops. Embed the complete font once per PDF so every CJK glyph renders.
-    if(!fonts.has(key))fonts.set(key,key==='cjk'?await doc.embedFont(await fontBytes(),{subset:false}):await doc.embedFont(standardFont[key]??StandardFonts.Helvetica));
+  async function font(name,bold=false,italic=false) {
+    const custom=CJK_FONTS.has(name),key=custom?name:`${name}|${bold}|${italic}`;
+    // fontkit 1.1.1 preserves CJK character maps but drops CFF outlines while
+    // subsetting these OTFs. Embed each selected family once so glyphs remain
+    // both visible and searchable in the exported PDF.
+    if(!fonts.has(key))fonts.set(key,custom?await doc.embedFont(await fontBytes(name),{subset:false}):await doc.embedFont(standardFont[key]??StandardFonts.Helvetica));
     return fonts.get(key);
   }
   async function drawObject(o) {
@@ -63,16 +81,23 @@ export async function composePdf(bytes,objects,fontBytes) {
     page.pushOperators(pushGraphicsState(),concatTransformationMatrix(...matrix),setGraphicsState(gs),concatTransformationMatrix(1,0,0,1,x+w/2,y+h/2),concatTransformationMatrix(Math.cos(a),Math.sin(a),-Math.sin(a),Math.cos(a),0,0),concatTransformationMatrix(1,0,0,1,-w/2,-h/2));
     if(o.type==='text') {
       const items=[];
-      for(const segment of textSegments(o))for(const ch of segment.text){const fontKey=/[^\x20-\x7e\n]/.test(ch)?'cjk':segment.font;items.push({ch,font:await font(segment.font,fontKey==='cjk'),fontKey,size:segment.size,color:segment.color});}
+      for(const segment of textSegments(o))for(const ch of segment.text){const selectedCjk=CJK_FONTS.has(segment.font),ascii=/^[\x20-\x7e\n]$/.test(ch),customFont=selectedCjk&&!ascii?segment.font:!selectedCjk&&!ascii?fallbackCjkFont(ch):null,fontName=customFont??(selectedCjk?(segment.font.includes('serif')?'serif':'sans'):segment.font),fontKey=customFont??`${fontName}|${segment.bold}|${segment.italic}`;items.push({ch,font:await font(fontName,segment.bold,segment.italic),fontKey,size:segment.size,color:segment.color,bold:segment.bold,italic:segment.italic,underline:segment.underline,letterSpacing:segment.letterSpacing,synthetic:!!customFont});}
       const lines=[];let line=[],lineWidth=0;
-      for(const item of items){if(item.ch==='\n'){lines.push(line);line=[];lineWidth=0;continue;}const width=item.font.widthOfTextAtSize(item.ch,item.size);if(line.length&&lineWidth+width>w){lines.push(line);line=[];lineWidth=0;}line.push({...item,width});lineWidth+=width;}lines.push(line);
-      const heights=lines.map(line=>Math.max(o.size,...line.map(item=>item.size))*1.3),total=heights.reduce((sum,value)=>sum+value,0);
+      for(const item of items){if(item.ch==='\n'){lines.push(line);line=[];lineWidth=0;continue;}const width=item.font.widthOfTextAtSize(item.ch,item.size),advance=width+item.letterSpacing;if(line.length&&lineWidth+width>w){lines.push(line);line=[];lineWidth=0;}line.push({...item,width,advance});lineWidth+=advance;}lines.push(line);
+      const lineHeight=o.lineHeight??1.3,maxSizes=lines.map(line=>Math.max(o.size,...line.map(item=>item.size))),heights=maxSizes.map(size=>size*lineHeight),total=heights.reduce((sum,value)=>sum+value,0);
       if(total>h+.01)throw new Error('文字框高度不足，请增高文字框或减小字号后导出。');
+      const drawTextGroup=(group,baseline)=>{
+        page.pushOperators(pushGraphicsState(),concatTransformationMatrix(1,0,0,-1,group.x,baseline));
+        const options={y:0,size:group.size,font:group.font,color:color(group.color),...(group.synthetic&&group.italic?{xSkew:degrees(-12)}:{})},draw=(text,x)=>{page.drawText(text,{...options,x});if(group.synthetic&&group.bold)page.drawText(text,{...options,x:x+Math.max(.35,group.size*.022)});};
+        if(group.letterSpacing){let offset=0;for(const [index,ch] of [...group.text].entries()){draw(ch,offset);offset+=group.widths[index]+group.letterSpacing;}}else draw(group.text,0);
+        if(group.underline)page.drawLine({start:{x:0,y:-Math.max(1,group.size*.12)},end:{x:group.width,y:-Math.max(1,group.size*.12)},thickness:Math.max(.65,group.size*.045),color:color(group.color)});
+        page.pushOperators(popGraphicsState());
+      };
       let top=0;
       for(let i=0;i<lines.length;i++) {
-        const line=lines[i],tw=line.reduce((sum,item)=>sum+item.width,0),tx=o.align==='center'?(w-tw)/2:o.align==='right'?w-tw:0,baseline=top+heights[i]/1.3;let cursor=tx,group=null;
-        for(const item of line){const key=`${item.fontKey}|${item.size}|${item.color}`;if(!group||group.key!==key){if(group){page.pushOperators(pushGraphicsState(),concatTransformationMatrix(1,0,0,-1,group.x,baseline));page.drawText(group.text,{x:0,y:0,size:group.size,font:group.font,color:color(group.color)});page.pushOperators(popGraphicsState());}group={key,x:cursor,text:item.ch,size:item.size,font:item.font,color:item.color};}else group.text+=item.ch;cursor+=item.width;}
-        if(group){page.pushOperators(pushGraphicsState(),concatTransformationMatrix(1,0,0,-1,group.x,baseline));page.drawText(group.text,{x:0,y:0,size:group.size,font:group.font,color:color(group.color)});page.pushOperators(popGraphicsState());}
+        const line=lines[i],tw=line.reduce((sum,item)=>sum+item.advance,0)-(line.at(-1)?.letterSpacing??0),tx=o.align==='center'?(w-tw)/2:o.align==='right'?w-tw:0,baseline=top+maxSizes[i];let cursor=tx,group=null;
+        for(const item of line){const key=`${item.fontKey}|${item.size}|${item.color}|${item.underline}|${item.letterSpacing}`;if(!group||group.key!==key){if(group)drawTextGroup(group,baseline);group={key,x:cursor,text:item.ch,size:item.size,font:item.font,color:item.color,bold:item.bold,italic:item.italic,underline:item.underline,letterSpacing:item.letterSpacing,synthetic:item.synthetic,width:item.width,widths:[item.width]};}else{group.text+=item.ch;group.width+=item.advance;group.widths.push(item.width);}cursor+=item.advance;}
+        if(group)drawTextGroup(group,baseline);
         top+=heights[i];
       }
     } else if(o.type==='image') {
@@ -83,22 +108,23 @@ export async function composePdf(bytes,objects,fontBytes) {
     } else if(o.type==='rect'||o.type==='highlight') {
       page.drawRectangle({x:0,y:0,width:w,height:h,...(o.type==='highlight'?{color:color(o.color)}:{borderColor:color(o.color),borderWidth:o.size})});
     } else {
-      page.pushOperators(setLineCap(1),setLineJoin(1));
       const points=o.points??[[0,0],[1,1]],curve=o.type==='arrow'?quadraticGeometry(points,w,h):null,headFrom=curve?[curve.control.x/w,curve.control.y/h]:points[0],dashedArrow=o.lineVariant==='arrow-dashed'||o.lineVariant==='arrow-dashed-both';
-      const filled=o.type==='arrow'&&(o.lineStyle??'arrow')==='arrow'?filledArrowShape(headFrom,points.at(-1),w,h,o.size,1,o.lineVariant):null;
-      if(curve){
-        if(o.lineStyle==='dashed'||dashedArrow)page.pushOperators(...quadraticStrokeOperators(curve,color(o.color),o.size,lineDashPattern(o.size,1,dashedArrow?'dash-even':o.lineVariant)));
+      const filled=o.type==='arrow'&&(o.lineStyle??'arrow')==='arrow'?filledArrowShape(headFrom,points.at(-1),w,h,o.size,1,o.lineVariant):null,operators=[setLineCap(1),setLineJoin(1)];
+      if(o.type==='pen')operators.push(...penStrokeOperators(points,w,h,color(o.color),o.size,o.penMode==='line'));
+      else if(curve){
+        if(o.lineStyle==='dashed'||dashedArrow)operators.push(...quadraticStrokeOperators(curve,color(o.color),o.size,lineDashPattern(o.size,1,dashedArrow?'dash-even':o.lineVariant)));
         else if(filled){
           const joinStart=filled.shaftEnd??{x:(filled.points[1].x+filled.points.at(-2).x)/2,y:(filled.points[1].y+filled.points.at(-2).y)/2},inset=Math.hypot(curve.end.x-joinStart.x,curve.end.y-joinStart.y),tangent=Math.max(1,Math.hypot(curve.end.x-curve.control.x,curve.end.y-curve.control.y)),stop=Math.max(.05,Math.min(.995,1-inset/(2*tangent))),shaftWidth=filled.includesShaft?Math.max(4,o.size*3.2):o.size;
-          page.pushOperators(...quadraticStrokeOperators(curve,color(o.color),shaftWidth,null,stop));
-        }else page.pushOperators(...quadraticStrokeOperators(curve,color(o.color),o.size));
+          operators.push(...quadraticStrokeOperators(curve,color(o.color),shaftWidth,null,stop));
+        }else operators.push(...quadraticStrokeOperators(curve,color(o.color),o.size));
       }else if(o.type==='arrow'&&(o.lineStyle==='dashed'||dashedArrow)){
         const dashed=[setStrokingColor(color(o.color)),setLineWidth(o.size),setDashPattern(lineDashPattern(o.size,1,dashedArrow?'dash-even':o.lineVariant),0),moveTo(points[0][0]*w,points[0][1]*h)];
         for(let i=1;i<points.length;i++)dashed.push(lineTo(points[i][0]*w,points[i][1]*h));
-        page.pushOperators(...dashed,strokePath(),restoreDashPattern());
-      }else if(!filled?.includesShaft)for(let i=1;i<points.length;i++)page.drawLine({start:{x:points[i-1][0]*w,y:points[i-1][1]*h},end:i===points.length-1&&filled?.shaftEnd?filled.shaftEnd:{x:points[i][0]*w,y:points[i][1]*h},thickness:o.size,color:color(o.color)});
-      if(o.type==='arrow'&&(o.lineStyle??'arrow')==='arrow')for(const segment of curve?arrowHeadForCurve(curve,w,h,o.size,o.lineVariant):arrowHeadSegments(points[0],points.at(-1),w,h,o.size,1,o.lineVariant))page.drawLine({...segment,thickness:o.size,color:color(o.color)});
-      if(filled){const polygon=curve&&filled.includesShaft?filled.points.slice(1,-1):filled.points,[first,...rest]=polygon,operators=[setFillingColor(color(o.color)),moveTo(first.x,first.y),...rest.map(point=>lineTo(point.x,point.y)),closePath(),fillPath()];page.pushOperators(...operators);}
+        operators.push(...dashed,strokePath(),restoreDashPattern());
+      }else if(!filled?.includesShaft){operators.push(setStrokingColor(color(o.color)),setLineWidth(o.size),moveTo(points[0][0]*w,points[0][1]*h));for(let i=1;i<points.length;i++)operators.push(lineTo(i===points.length-1&&filled?.shaftEnd?filled.shaftEnd.x:points[i][0]*w,i===points.length-1&&filled?.shaftEnd?filled.shaftEnd.y:points[i][1]*h));operators.push(strokePath());}
+      if(o.type==='arrow'&&(o.lineStyle??'arrow')==='arrow'){const segments=curve?arrowHeadForCurve(curve,w,h,o.size,o.lineVariant):arrowHeadSegments(points[0],points.at(-1),w,h,o.size,1,o.lineVariant);if(segments.length){operators.push(setStrokingColor(color(o.color)),setLineWidth(o.size));for(const segment of segments)operators.push(moveTo(segment.start.x,segment.start.y),lineTo(segment.end.x,segment.end.y));operators.push(strokePath());}}
+      if(filled){const polygon=curve&&filled.includesShaft?filled.points.slice(1,-1):filled.points,[first,...rest]=polygon;operators.push(setFillingColor(color(o.color)),moveTo(first.x,first.y),...rest.map(point=>lineTo(point.x,point.y)),closePath(),fillPath());}
+      paintTransparencyGroup(page,doc,operators,w,h,Math.max(24,o.size*8));
     }
     page.pushOperators(popGraphicsState());
   }

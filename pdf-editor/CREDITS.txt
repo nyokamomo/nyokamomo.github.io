@@ -25,10 +25,11 @@ pdf-lib 1.17.1 (MIT), https://github.com/Hopding/pdf-lib
 Fontkit's browser build bundles pako 1.x. Attribution and terms are retained
 in LICENSE-fontkit.txt. No separate LICENSE file is provided by the fontkit
 npm package; its package metadata and README declare MIT.
-Noto Sans SC Regular (SIL OFL 1.1): LICENSE-NotoSansSC.txt.
-Unmodified installed font; copyright metadata: (c) 2014-2021 Adobe,
-with Reserved Font Name 'Source'. Official font license source:
-https://github.com/notofonts/noto-cjk/blob/main/Sans/LICENSE
-The complete font is embedded once per PDF containing added CJK text, to keep
-composite glyph outlines intact (approximately 6 MiB compressed).
+Noto Sans SC, Noto Serif SC, Noto Sans JP, Noto Serif JP, Noto Sans KR and
+Noto Serif KR Regular (SIL OFL 1.1): LICENSE-NotoSansSC.txt. These unmodified
+region-specific subset OTFs come from the official Noto CJK repository:
+https://github.com/notofonts/noto-cjk
+They are loaded only when selected and embedded once per used family during
+PDF export. The font menu keeps Chinese, Japanese and Korean regional glyph
+forms separate instead of relying on an operating-system font.
 No paid API, OCR service or AI is used.

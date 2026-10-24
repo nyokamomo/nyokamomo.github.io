@@ -39,7 +39,7 @@ export class PdfSession {
   }
   chars(index) {
     return this.withPage(index, page => {
-      const text = this.e.FPDFText_LoadPage(page), box = this.alloc(32), out = this.alloc(8), result = [];
+      const text = this.e.FPDFText_LoadPage(page), box = this.alloc(32), matrix = this.alloc(24), out = this.alloc(8), result = [];
       try {
         const w = Math.round(this.e.FPDF_GetPageWidth(page) * 10), h = Math.round(this.e.FPDF_GetPageHeight(page) * 10);
         const point = (x, y) => {
@@ -57,11 +57,14 @@ export class PdfSession {
           if (r <= l || t <= b) continue;
           const points = [point(l,b),point(l,t),point(r,b),point(r,t)];
           const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
-          const fontSize=this.e.FPDFText_GetFontSize(text,i);
+          const nominalFontSize=this.e.FPDFText_GetFontSize(text,i),hasMatrix=this.e.FPDFText_GetMatrix(text,i,matrix);
+          const verticalScale=hasMatrix?Math.hypot(this.e.pdfium.getValue(matrix+8,'float'),this.e.pdfium.getValue(matrix+12,'float')):1;
+          const effectiveFontSize=Number.isFinite(nominalFontSize)&&nominalFontSize>0&&Number.isFinite(verticalScale)&&verticalScale>0?nominalFontSize*verticalScale:nominalFontSize;
+          const fontSize=Number.isFinite(effectiveFontSize)?Math.round(effectiveFontSize*1000)/1000:effectiveFontSize;
           result.push({ id: i, value, raw: [l,t,r,b], ...(Number.isFinite(fontSize)&&fontSize>0?{fontSize}:{}), x: Math.min(...xs), y: Math.min(...ys), width: Math.max(...xs)-Math.min(...xs), height: Math.max(...ys)-Math.min(...ys) });
         }
         return result;
-      } finally { if (text) this.e.FPDFText_ClosePage(text); this.free(box); this.free(out); }
+      } finally { if (text) this.e.FPDFText_ClosePage(text); this.free(box); this.free(matrix); this.free(out); }
     });
   }
   render(index, maxWidth = 1200) {
