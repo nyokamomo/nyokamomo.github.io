@@ -1,0 +1,32 @@
+{
+  "wrapper": "0.12.15",
+  "core": "0.12.10",
+  "size": 32232419,
+  "sha256": "9f57947a5bd530d8f00c5b3f2cb2a3492faa7e5d823315342d6a8656d0a6b7b7",
+  "parts": [
+    {
+      "file": "ffmpeg-core.wasm.part1",
+      "size": 16777216,
+      "sha256": "4ccba0c9cc7f019751a958ead3918cf51c9563ff2f8a76fb1f72ae492f66693b"
+    },
+    {
+      "file": "ffmpeg-core.wasm.part2",
+      "size": 15455203,
+      "sha256": "80e8b2ae7994e92102e048249ab0a6673480ca626c359b1d321b24f105f02e65"
+    }
+  ],
+  "packages": [
+    {
+      "name": "ffmpeg-ffmpeg-0.12.15.tgz",
+      "url": "https://registry.npmjs.org/@ffmpeg/ffmpeg/-/ffmpeg-0.12.15.tgz",
+      "sha256": "c8a23365fb39b46d3d1d9baa2e74b522d00ce5d57e8b20471ad2665eaad38e3e",
+      "directory": "wrapper"
+    },
+    {
+      "name": "ffmpeg-core-0.12.10.tgz",
+      "url": "https://registry.npmjs.org/@ffmpeg/core/-/core-0.12.10.tgz",
+      "sha256": "d00089ce82e1bdf637ddbe42e0c3d41a1ba8cf4c9e825e7fa4d0bb970e844bd4",
+      "directory": "core"
+    }
+  ]
+}

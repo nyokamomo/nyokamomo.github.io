@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#fce7b5"/><stop offset="1" stop-color="#ffd4bf"/></linearGradient><linearGradient id="sea" x2=".2" y2="1"><stop stop-color="#61b4b8"/><stop offset="1" stop-color="#216182"/></linearGradient><linearGradient id="hill"><stop stop-color="#236b8c"/><stop offset="1" stop-color="#173b58"/></linearGradient></defs>
+<path fill="#fff9ea" d="M0 0h1200v1000H0z"/><path fill="url(#sky)" d="M60 60h1080v780H60z"/>
+<circle cx="850" cy="240" r="116" fill="#f3655c"/><path fill="#d7918f" d="m60 580 170-200 178 133 220-230 253 304 148-198 111 167v284H60z"/>
+<path fill="url(#hill)" d="m60 630 210-160 139 92 250-200 164 176 142-57 175 153v206H60z"/>
+<path fill="url(#sea)" d="M60 700q305-150 610-28t470 8v160H60z"/>
+<path d="M65 748q297-139 614-28t456-8M60 784q296-128 621-24t459-8M60 820q307-105 620-18t460-3" stroke="#f8e9c4" stroke-width="7" fill="none"/>
+<path fill="#fff9ea" d="M60 840h1080v100H60z"/><text x="60" y="917" font-family="Arial,sans-serif" font-size="60" font-weight="900" fill="#204762" letter-spacing="9">COASTAL MEMORIES</text><text x="65" y="953" font-family="monospace" font-size="17" fill="#67848d" letter-spacing="5">NYOKORE / COLOUR STUDY NO. 01</text>
+</svg>

@@ -1,0 +1,23 @@
+Video MP3 Extractor - browser conversion engine
+
+@ffmpeg/ffmpeg 0.12.15, Copyright (c) 2019 Jerome Wu, MIT License.
+https://github.com/ffmpegwasm/ffmpeg.wasm
+License text: LICENSE-MIT.txt
+
+@ffmpeg/core 0.12.10 (single-thread), GPL-2.0-or-later.
+FFmpeg and its included third-party libraries retain their respective licenses.
+License text: LICENSE-GPL-2.0.txt
+Upstream source, build scripts and library source references:
+https://github.com/ffmpegwasm/ffmpeg.wasm/releases/tag/v12.15
+https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15
+https://github.com/ffmpegwasm/ffmpeg.wasm/blob/v12.15/Dockerfile
+https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15/build
+https://ffmpeg.org/download.html
+
+The unmodified npm-distributed engine is served locally; its WebAssembly binary
+is split into two byte ranges, reassembled without modification in the browser.
+Pinned package URLs and SHA-256 checksums are in engine/manifest.json.
+No imported video or generated audio is sent to the server.
+Rebuild project assets: node scripts/prepare-video-mp3.mjs
+
+This software is distributed WITHOUT ANY WARRANTY; see the license texts.

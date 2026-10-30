@@ -1,0 +1,15 @@
+NYOKORE RISO印刷实验室
+
+Riso separation, halftone renderer and coastal sample illustration: Nyokore project sources.
+The tool icon was provided by the project owner.
+
+PSD composite-image reader and layered PSD writer: ag-psd 33.0.0, MIT license.
+https://github.com/Agamnentzar/ag-psd
+Full license: /riso-lab/LICENSE-ag-psd.txt
+
+AI/PDF composite rendering reuses this site's PDFium engine without uploading files.
+Engine attribution and third-party notices: /pdf-editor/CREDITS.txt
+PDFium license: /pdf-editor/LICENSE-pdfium.txt
+EmbedPDF license: /pdf-editor/LICENSE-embedpdf.txt
+
+This tool simulates a visual style. RISO/RISOGRAPH trademarks belong to their respective owners.

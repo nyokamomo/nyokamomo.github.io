@@ -1,0 +1,12 @@
+Salamander Grand Piano — Yamaha C5 recordings by Alexander Holm.
+License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+https://creativecommons.org/licenses/by/3.0/
+
+Source MP3 subset: Tone.js audio repository, revision
+869b6f8d9cddb47d966238c012041480b1ce517a
+https://github.com/Tonejs/audio/tree/869b6f8d9cddb47d966238c012041480b1ce517a/salamander
+
+NYOKORE distributes these 30 MP3 recordings without further modification.
+Playback maps nearby keys by pitch and applies a velocity/release envelope.
+This web subset uses one recording per sampled pitch; it does not include all
+16 velocity layers of the original full Salamander library.
