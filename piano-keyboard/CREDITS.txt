@@ -1,0 +1,41 @@
+NYOKORE 钢琴练习录制舱 — 音源来源与授权
+
+三角钢琴（实录）
+Salamander Grand Piano, Yamaha C5 recorded by Alexander Holm.
+CC BY 3.0: https://creativecommons.org/licenses/by/3.0/
+Source: https://github.com/Tonejs/audio/tree/869b6f8d9cddb47d966238c012041480b1ce517a/salamander
+30 unmodified MP3 recordings, one layer per pitch. Shared notes reuse the
+existing melody-lab piano assets. Further details: salamander/CREDITS.txt
+
+民谣钢弦吉他（实录）
+Meta Steel Guitar, recorded by Meta Creative Audio.
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://github.com/facebookincubator/Meta-open-sound/tree/251c0be57d5d1b3242b91f53e0cde62ab1cb42d9/systems/instruments/meta-steel-guitar
+45 medium-velocity recordings, every semitone E2–C6, selected across six strings.
+NYOKORE edits: leading silence trimmed, per-note tuning, 35 Hz high-pass,
+level matching, short attack/end fades, stereo 44.1 kHz 160 kbps MP3 encoding.
+Full recorded decay retained, without looping or synthesized replacement.
+Replaces the previous nylon-string bank; saved guitar performances remain compatible.
+
+古筝（实录）
+LOVELY CHINESE GUZHENG PLUCKED by Pufermufin, 2017.
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://freesound.org/people/Pufermufin/sounds/396868/
+Public high-quality MP3: https://cdn.freesound.org/previews/396/396868_6977826-hq.mp3
+14 isolated plucks selected from the actual instrument recording, D2–D5.
+NYOKORE edits: trimming, light low-frequency filtering, pitch correction,
+short click-free fades, level matching and stereo MP3 encoding.
+No looping; the recorded pluck and natural resonance are retained.
+
+钢片琴（实录）
+Celeste Samples, recorded by stamperadam with spaced-pair Neumann KM-184s.
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://freesound.org/people/stamperadam/packs/6166/
+12 hard-struck stereo recordings from the public high-quality MP3 previews.
+NYOKORE edits: map file names C2–G#5 to measured sounding pitch C4–G#7,
+pitch correction, 80 Hz high-pass, level matching, short attack/end fades,
+stereo 44.1 kHz 160 kbps MP3 encoding. No loops or synthesized replacement.
+
+所有实录音色均按最近的采样音高移调覆盖键盘；乐器原音域外的音是扩展移调，
+并非88个琴键逐音实录。当前网页采样库为单力度层。
+复古电钢由本工具的 Web Audio 合成引擎生成。
